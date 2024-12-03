@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         ABC Battle Logger
+// @name         BD Logger for ABC-PVP-Format
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -9,7 +9,8 @@
 // @grant        none
 // ==/UserScript==
 
-
+// Only useful for ABC PVP Format
+//ABC PVP Format: https://www.neopets.com/~Vlnt
 //How 2 Use:Above the battle log,in the black bar, you will see how many times your multi-healers healed.
 
 
