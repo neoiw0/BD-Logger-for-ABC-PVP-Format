@@ -11,21 +11,55 @@
 
 // Only useful for ABC PVP Format
 //ABC PVP Format: https://www.neopets.com/~Vlnt
-//How 2 Use:Above the battle log,in the black bar, you will see how many times your multi-healers healed.
+//How 2 Use:Above the battle log,in the black bar, you will see how many times your multi-healers healed.(Make it easier for oneself to follow the rules)Also, if there is a difference on MaxHp of 2 pets, this script helps note the number.
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////weapon pic link/////////////////////////////////////////////////////////////////
 var tmt='url("https://images.neopets.com/items/wea_magical_tablet.gif")';
 var istaff='url("https://images.neopets.com/items/earth_staff.gif")';
 var wodf='url("https://images.neopets.com/items/darkfaerie_wand.gif")';
 var blaze='url("https://images.neopets.com/items/wea_tge_scimitar.gif")';
 var rodn='url("https://images.neopets.com/items/rod_darknova.gif")';
+////////////////////////////////////////////weapon string to display/////////////////////////////////////////////////////////////////
+var tmtstr="TMT15";
+var istaffstr='Istaff20';
+var wodfstr='WODF30';
+var blazestr='Blaze15';
+var rodnstr='RODN30';
+
+
 
 var onlyonce=0;
 var slot1=document.querySelector("#p1e1m > div");
 var slot2=document.querySelector("#p1e2m > div");
-var intervalText=setInterval(function(){if(document.querySelector("#flround")&&!(document.querySelector("#flround").textContent=="1")){document.querySelector("#statusmsg > h4").textContent=localStorage.getItem('ABCLogger');}},3500);//改变文字
+
+
+ // 选择到指定的元素
+const element =document.querySelector("#container__2020 > div.battledome-container");
+
+// 创建一个新的 <p> 元素
+const newParagraph = document.createElement("p");
+//只要不是第一輪,就改變文字
+var intervalText=setInterval(function(){if(document.querySelector("#flround")&&!(document.querySelector("#flround").textContent=="1")){
+    ////////////////////
+
+if(localStorage.ABCMaxHP!=null&&localStorage.ABCMaxHP!=""&&localStorage.ABCMaxHP!="0"){
+// 设置 <p> 元素的文本内容
+newParagraph.textContent = "MaxHP Difference="+localStorage.ABCMaxHP;
+}
+// 设置 <p> 元素的文本颜色为红色
+newParagraph.style.color = "red";
+
+// 将新的 <p> 元素添加到选择的元素下面
+element.appendChild(newParagraph);
+
+
+
+
+
+    //////////////////////////
+    document.querySelector("#statusmsg > h4").textContent=localStorage.getItem('ABCLogger');}},3500);//改变文字
 var interva2Text=setInterval(function(){
 
 
@@ -55,24 +89,25 @@ var intervalId0=setInterval(function(){
     function myCustomMethod() {
          console.log(document.querySelector("#flround").textContent);
         if(document.querySelector("#flround").textContent=="1"){
+            localStorage.ABCMaxHP=document.querySelector("#p1hp").textContent-document.querySelector("#p2hp").textContent;
 localStorage.setItem('ABCLogger', "Log:");
 
 }
         
-        TestWeapon(slot1,tmt,"TMT15",1200,2);
-         TestWeapon(slot1,istaff,"Istaff20",1200,0.2);
-        TestWeapon(slot1,wodf,"WODF30",1200,0.25);
-        TestWeapon(slot1,blaze,"Blaze15",1200,0.2);
-        TestWeapon(slot1,rodn,"RODN30",1200,2);
+        TestWeapon(slot1,tmt,tmtstr,1200,2);
+         TestWeapon(slot1,istaff,istaffstr,1200,0.2);
+        TestWeapon(slot1,wodf,wodfstr,1200,0.25);
+        TestWeapon(slot1,blaze,blazestr,1200,0.2);
+        TestWeapon(slot1,rodn,rodnstr,1200,2);
 
                         
         //
            
-         TestWeapon(slot2,tmt,"TMT15", 2200,2);
-         TestWeapon(slot2,istaff,"Istaff20", 2200,0.2);
-        TestWeapon(slot2,wodf,"WODF30",2200,0.25);
-        TestWeapon(slot2,blaze,"Blaze15",2200,0.2);
-        TestWeapon(slot2,rodn,"RODN30",2200,2);
+         TestWeapon(slot2,tmt,tmtstr, 2200,2);
+         TestWeapon(slot2,istaff,istaffstr, 2200,0.2);
+        TestWeapon(slot2,wodf,wodfstr,2200,0.25);
+        TestWeapon(slot2,blaze,blazestr,2200,0.2);
+        TestWeapon(slot2,rodn,rodnstr,2200,2);
                         
         // 这里可以写你想要触发的任何自定义代码
     }
